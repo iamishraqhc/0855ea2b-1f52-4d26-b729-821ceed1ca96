@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Typography } from '@mui/material';
+import { Alert, Box, Button, Snackbar, Typography } from '@mui/material';
 import ParkingSpot from './components/ParkingSpot';
 import parkingSpotsData from './data/parkingSpots';
 import Reservation from './models/Reservation';
@@ -7,6 +7,12 @@ import Reservation from './models/Reservation';
 const App: React.FC = () => {
   const [parkingSpots, setParkingSpots] = useState(parkingSpotsData);
   const [reservations, setReservations] = useState<Reservation[]>([]);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   const handleEnterGarage = () => {
     const availableSpot = parkingSpots.find((spot) => spot.state === 'available');
@@ -26,6 +32,9 @@ const App: React.FC = () => {
         };
         setReservations([ ...reservations, reservation]);
       }
+    } else {
+      setSnackbarMessage('Parking is full. No cars can enter.');
+      setSnackbarOpen(true);
     }
   };
 
@@ -67,7 +76,7 @@ const App: React.FC = () => {
           {parkingSpots.map((spot) => (
             <Box key={spot.spotId}>
               <Box>Spot: #{spot.spotId}</Box>
-              <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <ul style={{ listStyleType: 'none', padding: 0, flexWrap: 'wrap', gap: '0.5rem' }}>
                 {reservations
                   .filter((reservation) => reservation.spotId === spot.spotId)
                   .map((reservation, index) => (
@@ -89,6 +98,11 @@ const App: React.FC = () => {
           ))}
         </Box>
       </Box>
+      <Snackbar open={snackbarOpen} autoHideDuration={5000} onClose={handleSnackbarClose}>
+        <Alert onClose={handleSnackbarClose} severity="error" sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
