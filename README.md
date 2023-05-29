@@ -47,6 +47,7 @@ This is a React application for a parking garage reservation system. It allows u
 
 - Click the "Enter Garage" button to simulate a driver entering the garage.
 - Available parking spots will be assigned automatically to drivers.
+- Click the respective "Exit" button from a parking spot to leave that specific spot.
 - The reservation history for the entire parking lot will be displayed.
 
 ## A sample overview
