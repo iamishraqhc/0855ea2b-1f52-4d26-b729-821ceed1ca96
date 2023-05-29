@@ -75,7 +75,7 @@ const App: React.FC = () => {
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
           {parkingSpots.map((spot) => (
             <Box key={spot.spotId}>
-              <Box>Spot: #{spot.spotId}</Box>
+              <Box sx={{ textAlign: 'center' }}>Spot: #{spot.spotId}</Box>
               <ul style={{ listStyleType: 'none', padding: 0, flexWrap: 'wrap', gap: '0.5rem' }}>
                 {reservations
                   .filter((reservation) => reservation.spotId === spot.spotId)
