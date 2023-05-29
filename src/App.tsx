@@ -67,7 +67,7 @@ const App: React.FC = () => {
           {parkingSpots.map((spot) => (
             <Box key={spot.spotId}>
               <Box>Spot: #{spot.spotId}</Box>
-              <ul style={{ listStyleType: 'none', padding: 0 }}>
+              <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                 {reservations
                   .filter((reservation) => reservation.spotId === spot.spotId)
                   .map((reservation, index) => (
