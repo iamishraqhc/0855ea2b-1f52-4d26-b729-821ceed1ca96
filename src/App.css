@@ -1,0 +1,27 @@
+/* .parking-spots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.reservation-history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.spot-id {
+  margin-bottom: 0.5rem;
+}
+
+.enter {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  background-color: red;
+}
+
+.exit {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  background-color: green;
+} */
