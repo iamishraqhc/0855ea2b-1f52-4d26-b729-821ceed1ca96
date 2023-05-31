@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, Box, Button, Snackbar, Typography } from '@mui/material';
-import ParkingSpot from './components/ParkingSpot';
+import { ParkingSpot, ReservationHistory } from './components';
 import parkingSpotsData from './data/parkingSpots';
 import Reservation from './models/Reservation';
 
@@ -74,27 +74,11 @@ const App: React.FC = () => {
         <Typography sx={{ textAlign: 'center', fontSize: '24pt' }}>Reservation History Chart</Typography>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
           {parkingSpots.map((spot) => (
-            <Box key={spot.spotId}>
-              <Box sx={{ textAlign: 'center' }}>Spot: #{spot.spotId}</Box>
-              <ul style={{ listStyleType: 'none', padding: 0, flexWrap: 'wrap', gap: '0.5rem' }}>
-                {reservations
-                  .filter((reservation) => reservation.spotId === spot.spotId)
-                  .map((reservation, index) => (
-                    <li
-                      key={index}
-                      style={{
-                        border: '1px solid',
-                        borderColor: reservation.exitTimestamp ? 'green' : 'red',
-                        padding: '0.5rem',
-                        color: 'white',
-                        marginBottom: '0.5rem',
-                      }}
-                    >
-                      Plate Nr: {reservation.licenseNumber}
-                    </li>
-                  ))}
-              </ul>
-            </Box>
+            <ReservationHistory 
+              key={spot.spotId}
+              spotId={spot.spotId}
+              reservations={reservations} 
+            />
           ))}
         </Box>
       </Box>
