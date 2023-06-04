@@ -26,7 +26,7 @@ This is a React application for a parking garage reservation system. It allows u
 2. Navigate to the project directory:
 
    ```bash
-   cd 0855ea2b-1f52-4d26-b729-821ceed1ca96
+   cd smart-parking
    ```
 
 3. Install the dependencies:
